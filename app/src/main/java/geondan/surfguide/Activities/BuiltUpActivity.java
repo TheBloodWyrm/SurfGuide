@@ -34,7 +34,7 @@ public class BuiltUpActivity extends AppCompatActivity
         setContentView(R.layout.activity_builtup);
 
         initToolbar();
-         initInstances();
+        initInstances();
     }
 
     private void initToolbar()
@@ -48,6 +48,9 @@ public class BuiltUpActivity extends AppCompatActivity
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawerToggle = new ActionBarDrawerToggle(BuiltUpActivity.this, drawerLayout, R.string.hello_world, R.string.hello_world);
         drawerLayout.setDrawerListener(drawerToggle);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         rootLayout = (CoordinatorLayout) findViewById(R.id.rootLayout);
 
