@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/nav_header_bg"
+        android:src="@drawable/surfing"
         android:scaleType="centerCrop" />
 
     <TextView
@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="@dimen/nav_header_text_margin_left"
-        android:text="EJO"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:text="Vorname Nachname"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:id="@+id/name_in_drawer"/>
 
 </FrameLayout>

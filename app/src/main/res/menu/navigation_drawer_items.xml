@@ -3,13 +3,13 @@
 
     <group android:checkableBehavior="all">
         <item
-            android:id="@+id/navItem1"
-            android:icon="@drawable/ic_action_location_found_dark"
+            android:id="@+id/navItemHome"
+            android:icon="@mipmap/ic_home_black_24dp"
             android:title="Home"/>
         <item
-            android:id="@+id/navItem2"
+            android:id="@+id/navItemBuiltUp"
             android:icon="@drawable/ic_action_location_found_dark"
-            android:title="Blog"/>
+            android:title="Built Up"/>
 
         <item
             android:id="@+id/navItem3"

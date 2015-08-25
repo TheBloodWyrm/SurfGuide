@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import geondan.surfguide.HomeMenu.HomeMenuAdapter;
 import geondan.surfguide.R;
@@ -24,12 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
+    NavigationView navigationView;
 
     CoordinatorLayout rootLayout;
 
     private RecyclerView mRecyclerView;
     private HomeMenuAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    private TextView nameInDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,17 +45,31 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         initInstances();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.home_menu_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
+        nameInDrawer.setText("Paul Petritsch");
 
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
-        mAdapter = new HomeMenuAdapter();
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
 
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem)
+            {
+                drawerLayout.closeDrawers();
 
+                switch (menuItem.getItemId()){
+                    case R.id.navItemHome:
+                        System.out.println("Home");
+                        return true;
+                    case R.id.navItemBuiltUp:
+                        System.out.println("Built Up");
+                        Intent i = new Intent(getApplicationContext(), BuiltUpActivity.class);
+                        startActivity(i);
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+        });
 
         mAdapter.setOnItemClickListener(new HomeMenuAdapter.OnItemClickListener()
         {
@@ -74,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void initToolbar() {
@@ -91,6 +111,19 @@ public class MainActivity extends AppCompatActivity {
 
         rootLayout = (CoordinatorLayout) findViewById(R.id.rootLayout);
 
+        mRecyclerView = (RecyclerView) findViewById(R.id.home_menu_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new HomeMenuAdapter();
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        nameInDrawer = (TextView) findViewById(R.id.name_in_drawer);
+
+        navigationView = (NavigationView) findViewById(R.id.navigation);
     }
 
     @Override

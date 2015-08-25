@@ -1,15 +1,18 @@
 package geondan.surfguide.Activities;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import geondan.surfguide.R;
 
@@ -18,14 +21,16 @@ import geondan.surfguide.R;
  */
 public class BuiltUpActivity extends AppCompatActivity
 {
-
     Toolbar toolbar;
     CollapsingToolbarLayout collapsingToolbarLayout;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
+    NavigationView navigationView;
 
     CoordinatorLayout rootLayout;
+
+    private TextView nameInDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,6 +40,34 @@ public class BuiltUpActivity extends AppCompatActivity
 
         initToolbar();
         initInstances();
+
+        nameInDrawer.setText("Paul Petritsch");
+
+        navigationView.getMenu().getItem(1).setChecked(true);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
+        {
+
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem)
+            {
+                drawerLayout.closeDrawers();
+
+                switch (menuItem.getItemId())
+                {
+                    case R.id.navItemHome:
+                        System.out.println("Home");
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i);
+                        return true;
+                    case R.id.navItemBuiltUp:
+                        System.out.println("Built Up");
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+        });
     }
 
     private void initToolbar()
@@ -56,6 +89,10 @@ public class BuiltUpActivity extends AppCompatActivity
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
         collapsingToolbarLayout.setTitle("Built Up");
+
+        nameInDrawer = (TextView) findViewById(R.id.name_in_drawer);
+
+        navigationView = (NavigationView) findViewById(R.id.navigationBuiltUp);
     }
 
     @Override
