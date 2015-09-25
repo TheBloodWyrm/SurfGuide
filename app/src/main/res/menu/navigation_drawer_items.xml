@@ -8,7 +8,7 @@
             android:title="Home"/>
         <item
             android:id="@+id/navItemBuiltUp"
-            android:icon="@drawable/ic_action_location_found_dark"
+            android:icon="@mipmap/ic_books"
             android:title="Built Up"/>
 
         <item

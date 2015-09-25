@@ -1,4 +1,4 @@
-package geondan.surfguide.HomeMenu;
+package geondan.surfguide.BuiltUpMenu;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,60 +13,58 @@ import java.util.List;
 import geondan.surfguide.R;
 
 /**
- * Created by Paul on 20.07.2015.
+ * Created by Paul on 25.08.2015.
  */
-public class HomeMenuAdapter extends RecyclerView.Adapter<HomeMenuAdapter.ViewHolder>
+public class BuiltUpMenuAdapter extends RecyclerView.Adapter<BuiltUpMenuAdapter.ViewHolder>
 {
     OnItemClickListener itemClickListener;
 
-    List<ItemHomeMenu> items;
-    public HomeMenuAdapter(){
+    List<ItemBuiltUpMenu> items;
+
+    public BuiltUpMenuAdapter(){
         super();
         items = new ArrayList<>();
 
-        ItemHomeMenu item = new ItemHomeMenu();
+        ItemBuiltUpMenu item = new ItemBuiltUpMenu();
         item.setName("Built up");
-        item.setDescription("Instructions on how to built up your equipment");
         item.setThumbnail(R.drawable.surfing);
         items.add(item);
 
-        item = new ItemHomeMenu();
+        item = new ItemBuiltUpMenu();
         item.setName("Jibes");
-        item.setDescription("Have a look at how the best Jibes are done");
         item.setThumbnail(R.drawable.surfing);
         items.add(item);
 
-        item = new ItemHomeMenu();
+        item = new ItemBuiltUpMenu();
         item.setName("Tacks");
-        item.setDescription("Go ahead and learn some awesome Tacks");
         item.setThumbnail(R.drawable.surfing);
         items.add(item);
 
-        item = new ItemHomeMenu();
+        item = new ItemBuiltUpMenu();
         item.setName("Built up");
-        item.setDescription("Instructions on how to built up your equipment");
         item.setThumbnail(R.drawable.surfing);
         items.add(item);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_menu_cardview, viewGroup, false);
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
+    {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.built_up_menu_cardview, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i)
+    public void onBindViewHolder(ViewHolder viewHolder, int position)
     {
-        ItemHomeMenu item = items.get(i);
+        ItemBuiltUpMenu item = items.get(position);
         viewHolder.name.setText(item.getName());
-        viewHolder.description.setText(item.getDescription());
         viewHolder.thumbnail.setImageResource(item.getThumbnail());
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount()
+    {
         return items.size();
     }
 

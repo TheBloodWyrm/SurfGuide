@@ -37,37 +37,23 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    android:fitsSystemWindows="false"/>
 
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 >
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    asdfsdfasfasfsafsadffsafsaghjkllfrjghfvgfjkbgubvuziefnvonfcjfvbhidcfvbhcdnhbrvufhcribfrctfvzigbhjokm,mojinhbugvftcdrctfvgbhnjmk
-                    "/>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/built_up_recycler_view"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
 
     </android.support.design.widget.CoordinatorLayout>
 

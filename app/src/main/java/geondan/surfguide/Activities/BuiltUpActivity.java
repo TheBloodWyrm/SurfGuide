@@ -9,11 +9,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import geondan.surfguide.BuiltUpMenu.BuiltUpMenuAdapter;
 import geondan.surfguide.R;
 
 /**
@@ -29,6 +32,10 @@ public class BuiltUpActivity extends AppCompatActivity
     NavigationView navigationView;
 
     CoordinatorLayout rootLayout;
+
+    private RecyclerView mRecyclerView;
+    private BuiltUpMenuAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     private TextView nameInDrawer;
 
@@ -68,6 +75,28 @@ public class BuiltUpActivity extends AppCompatActivity
                 }
             }
         });
+        /*mAdapter.setOnItemClickListener(new BuiltUpMenuAdapter.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(View view, int position)
+            {
+                if (position == 0)
+                {
+                    System.out.println("It Works for the Build Up");
+                    Intent i = new Intent(getApplicationContext(), BuiltUpActivity.class);
+                    startActivity(i);
+                } else if (position == 1)
+                {
+                    System.out.println("It Works for the Jibes");
+                } else if (position == 2)
+                {
+                    System.out.println("It Works for Tacks");
+                } else if (position == 3)
+                {
+                    System.out.println("It Works for Built Up 2");
+                }
+            }
+        });*/
     }
 
     private void initToolbar()
@@ -90,6 +119,16 @@ public class BuiltUpActivity extends AppCompatActivity
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
         collapsingToolbarLayout.setTitle("Built Up");
 
+        mRecyclerView = (RecyclerView) findViewById(R.id.built_up_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new BuiltUpMenuAdapter();
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
         nameInDrawer = (TextView) findViewById(R.id.name_in_drawer);
 
         navigationView = (NavigationView) findViewById(R.id.navigationBuiltUp);
@@ -107,14 +146,6 @@ public class BuiltUpActivity extends AppCompatActivity
     {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     @Override
